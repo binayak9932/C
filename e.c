@@ -38,7 +38,7 @@ void toEchelonForm(float matrix[10][11], int n) {
         // Eliminate below
         for (int k = i + 1; k < n; k++) {
             float factor = matrix[k][i];
-            for (int j = 0; j <= n; j++) {
+            for (int j = i; j <= n; j++) {
                 matrix[k][j] -= factor * matrix[i][j];
             }
         }
