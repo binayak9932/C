@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 
-#define MAX_ITER 1000
-
 void gauss_seidel(int n, double a[n][n+1], double x[n], double tol) {
-    int i, j, k;
+    int i, j;
     double sum, error, xnew[n];
 
     printf("Initial guess values:\n");
@@ -12,9 +10,14 @@ void gauss_seidel(int n, double a[n][n+1], double x[n], double tol) {
         printf("x%d = %lf\n", i, x[i]);
     }
 
-    for (k = 0; k < MAX_ITER; k++) {
+    int iter = 0;
+    while (1) {
         error = 0.0;
         for (i = 0; i < n; i++) {
+            if (a[i][i] == 0.0) {
+                printf("Error: Division by zero encountered.\n");
+                return;
+            }
             sum = a[i][n];
             for (j = 0; j < n; j++) {
                 if (j != i) {
@@ -26,16 +29,16 @@ void gauss_seidel(int n, double a[n][n+1], double x[n], double tol) {
             x[i] = xnew[i];
         }
 
+        iter++;
+
         if (error <= tol) {
-            printf("\nSolution found after %d iterations:\n", k + 1);
+            printf("\nSolution found after %d iterations:\n", iter);
             for (i = 0; i < n; i++) {
                 printf("x%d = %lf\n", i, x[i]);
             }
             return;
         }
     }
-
-    printf("Solution not found within %d iterations.\n", MAX_ITER);
 }
 
 int main() {
