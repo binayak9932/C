@@ -5,9 +5,9 @@ void gauss_seidel(int n, double a[n][n+1], double x[n], double tol) {
     int i, j;
     double sum, error, xnew[n];
 
-    printf("Initial guess values:\n");
+    // Initialize guess values to zero
     for (i = 0; i < n; i++) {
-        printf("x%d = %lf\n", i, x[i]);
+        x[i] = 0.0;
     }
 
     int iter = 0;
@@ -55,12 +55,6 @@ int main() {
             printf("a[%d][%d] = ", i, j);
             scanf("%lf", &a[i][j]);
         }
-    }
-
-    printf("Enter the initial guess values:\n");
-    for (i = 0; i < n; i++) {
-        printf("x%d = ", i);
-        scanf("%lf", &x[i]);
     }
 
     printf("Enter the tolerance limit: ");
