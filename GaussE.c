@@ -5,7 +5,7 @@
 void printMatrix(float a[MAX_VARS][MAX_VARS+1], int n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j <= n; j++) {
-            printf("%9.3f ", a[i][j]);
+            printf("%.3f ", a[i][j]);
         }
         printf("\n");
     }
